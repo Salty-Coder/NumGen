@@ -34,7 +34,13 @@ def Opt1():
     hours, rem = divmod(endTime - startTime, 3600)
     minutes, seconds = divmod(rem, 60)
     seconds = round(seconds, 4)
-    print(colorama.Fore.GREEN + "Found " + str(find) + " after " + str(tries) + " tries with the scale " + str(starter) + "-" + str(ender) + ". " + colorama.Fore.RESET + "Performed in " + str(hours) + "h, " + str(minutes) + "m, " + str(seconds) + "s with the delay of " + str(delay) + " seconds. " + colorama.Fore.RED + "\nThe peak memory usage was " + str(peak / 10**6) + "MB" + colorama.Fore.RESET)
+    print(
+        f"{colorama.Fore.GREEN}Found {find} after {str(tries)} tries with the scale {starter}-{ender}. {colorama.Fore.RESET}Performed in {str(hours)}h, {str(minutes)}m, {str(seconds)}s with the delay of {delay} seconds. {colorama.Fore.RED}"
+        + "\nThe peak memory usage was "
+        + str(peak / 10**6)
+        + "MB"
+        + colorama.Fore.RESET
+    )
     tracemalloc.stop()
 
 #----------------------------------------------------------------------
@@ -47,15 +53,13 @@ def Opt2():
     ender = int(input("End Number: "))
     find = int(input("Find: "))
     repeats = int(input("Repeats: "))
-    repeat = 0
     delay = float(input("Delay: "))
     delay = int(delay)
     show = int(input("1: Show numbers. 2: Dont show: "))
     tries = 0
     print("---------------------------")
     startTime = time.time()
-    while repeat < repeats:
-        repeat = repeat + 1
+    for _ in range(repeats):
         while True:
             time.sleep(delay)
             num = random.randint(starter, ender)
@@ -69,7 +73,13 @@ def Opt2():
     hours, rem = divmod(endTime - startTime, 3600)
     minutes, seconds = divmod(rem, 60)
     seconds = round(seconds,4)
-    print(colorama.Fore.GREEN + "Found " + str(find) + " after an average of " + str(tries / repeats) + " tries (" + str(repeats) +" Repeats) with the scale " + str(starter) + "-" + str(ender) + ". "  + colorama.Fore.RESET + "Performed in " + str(hours) + "h, " + str(minutes) + "m, " + str(seconds) + "s with the delay of " + str(delay) + " seconds. " + colorama.Fore.RED + "\nThe peak memory usage was " + str(peak / 10**6) + "MB" + colorama.Fore.RESET)
+    print(
+        f"{colorama.Fore.GREEN}Found {find} after an average of {str(tries / repeats)} tries ({repeats} Repeats) with the scale {starter}-{ender}. {colorama.Fore.RESET}Performed in {str(hours)}h, {str(minutes)}m, {str(seconds)}s with the delay of {delay} seconds. {colorama.Fore.RED}"
+        + "\nThe peak memory usage was "
+        + str(peak / 10**6)
+        + "MB"
+        + colorama.Fore.RESET
+    )
     tracemalloc.stop()
 
 #----------------------------------------------------------------------
